@@ -67,28 +67,28 @@ export default function Home() {
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100 via-slate-50 to-white dark:from-slate-900 dark:via-slate-950 dark:to-black text-slate-800 dark:text-slate-100 flex flex-col relative overflow-hidden">
       
       {/* Navbar / Header Lite */}
-      <header className="p-6 flex justify-between items-center max-w-7xl mx-auto w-full z-10">
+      <header className="p-4 md:p-6 flex justify-between items-center max-w-7xl mx-auto w-full z-10">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
             Z
           </div>
-          <span className="font-bold text-xl tracking-tight">Zero Net Complaint</span>
+          <span className="font-bold text-base md:text-xl tracking-tight">Zero Net Complaint</span>
         </div>
-        <div className="flex gap-4">
-          <Link href="/fai_filantropi">
-            <Button variant="ghost" className="text-slate-600 dark:text-slate-300">
+        <div className="flex gap-2 md:gap-4">
+          <Link href="/fai_filantropi" className="hidden sm:block">
+            <Button variant="ghost" size="sm" className="text-slate-600 dark:text-slate-300 text-xs md:text-sm">
               FAI Filantropi
             </Button>
           </Link>
           <Link href="/track">
-            <Button variant="outline" className="gap-2">
-              <Search className="w-4 h-4" />
-              Track Laporan
+            <Button variant="outline" size="sm" className="gap-1 md:gap-2 text-xs md:text-sm">
+              <Search className="w-3 h-3 md:w-4 md:h-4" />
+              <span className="hidden sm:inline">Track</span>
             </Button>
           </Link>
           {/* Admin Login Link */}
-          <Link href="/admin/login">
-            <Button variant="ghost" className="hidden md:flex">
+          <Link href="/admin/login" className="hidden md:block">
+            <Button variant="ghost" size="sm">
               Admin
             </Button>
           </Link>
@@ -96,19 +96,19 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 py-12 z-10">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 md:py-12 z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center max-w-3xl mb-12"
+          className="text-center max-w-3xl mb-8 md:mb-12"
         >
-          <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-sm font-medium border border-indigo-100 mb-4 inline-block">
+          <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs md:text-sm font-medium border border-indigo-100 mb-3 md:mb-4 inline-block">
             Layanan Aspirasi Terintegrasi
           </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600 pb-2">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600 pb-2">
             Suarakan Aspirasi Anda,<br /> Kami Siap Mendengar
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-sm md:text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
             Platform aman dan terpercaya untuk melapor, berkonsultasi, dan menyampaikan aspirasi di lingkungan kampus. Privasi Anda adalah prioritas kami.
           </p>
         </motion.div>
@@ -118,25 +118,25 @@ export default function Home() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full px-4"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl w-full px-4"
         >
           {categories.map((cat) => (
             <motion.div key={cat.id} variants={item}>
               <Link href={cat.link} className="block h-full">
                 <Card className={`h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border ${cat.border} bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm`}>
-                  <CardHeader>
-                    <div className={`w-12 h-12 rounded-lg ${cat.bg} flex items-center justify-center mb-4`}>
+                  <CardHeader className="pb-3">
+                    <div className={`w-12 h-12 rounded-lg ${cat.bg} flex items-center justify-center mb-3`}>
                       <cat.icon className={`w-6 h-6 ${cat.color}`} />
                     </div>
-                    <CardTitle className="text-xl mb-2">{cat.title}</CardTitle>
-                    <CardDescription className="text-base">
+                    <CardTitle className="text-lg md:text-xl mb-2">{cat.title}</CardTitle>
+                    <CardDescription className="text-sm md:text-base">
                       {cat.description}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     
                   </CardContent>
-                  <CardFooter className="mt-auto">
+                  <CardFooter className="mt-auto pt-0">
                     <div className={`text-sm font-medium flex items-center gap-1 ${cat.color}`}>
                       Buat Laporan <ArrowRight className="w-4 h-4" />
                     </div>

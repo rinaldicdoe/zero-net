@@ -21,5 +21,6 @@ export type ReportFormValues = z.infer<typeof reportSchema>;
 export const filantropiSchema = z.object({
     name: z.string().min(2, "Nama wajib diisi"),
     study_program: z.string().min(2, "Program studi wajib diisi"),
-    transfer_amount: z.coerce.number().min(1000, "Nominal transfer minimal 1000"),
+    transfer_amount: z.number().min(1000, "Nominal transfer minimal 1000"),
 });
+

@@ -109,7 +109,13 @@ export default function FaiFilantropiPage() {
                     render={({ field }) => (
                     <FormItem>
                         <FormLabel>Jumlah Transfer (Rp)</FormLabel>
-                        <FormControl><Input type="number" {...field} /></FormControl>
+                        <FormControl>
+                          <Input 
+                            type="number" 
+                            {...field} 
+                            onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                          />
+                        </FormControl>
                         <FormMessage />
                     </FormItem>
                     )}

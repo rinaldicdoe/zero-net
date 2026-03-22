@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
   try {
@@ -21,7 +22,12 @@ export async function GET() {
     return NextResponse.json({ 
       status: 'success', 
       message: 'Supabase pinged successfully to prevent pause', 
-      data 
+      data,
+      timestamp: new Date().toISOString()
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate'
+      }
     });
   } catch (error: any) {
     return NextResponse.json({ 
@@ -30,7 +36,13 @@ export async function GET() {
       envCheck: {
         hasUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
         hasKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY
+      },
+      timestamp: new Date().toISOString()
+    }, { 
+      status: 500,
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate'
       }
-    }, { status: 500 });
+    });
   }
 }

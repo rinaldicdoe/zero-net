@@ -50,7 +50,7 @@ function CreateReportForm() {
       whatsapp: "",
       email: "",
       chronology: "",
-      preferred_feedback_channel: "dashboard", 
+      preferred_feedback_channel: "wa", 
     },
   });
 
@@ -141,9 +141,9 @@ function CreateReportForm() {
                 name="reporter_name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nama Lengkap</FormLabel>
+                    <FormLabel>Nama Lengkap / Anonim</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nama Anda" {...field} />
+                      <Input placeholder="Nama Anda atau 'Anonim'" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -281,7 +281,6 @@ function CreateReportForm() {
                     <SelectContent>
                       <SelectItem value="wa">WhatsApp</SelectItem>
                       <SelectItem value="email">Email</SelectItem>
-                      <SelectItem value="dashboard">Dashboard Web (Track)</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormDescription>

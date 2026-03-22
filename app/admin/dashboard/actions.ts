@@ -28,7 +28,7 @@ export async function sendFeedback(
   reportId: string, 
   adminUserId: string,
   message: string, 
-  sentVia: 'wa' | 'dashboard' | 'email'
+  sentVia: 'wa' | 'email'
 ) {
   const supabase = createAdminClient();
   

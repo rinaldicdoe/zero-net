@@ -33,7 +33,7 @@ export default function FeedbackForm({
       reportId, 
       adminUserId, 
       message, 
-      preferredChannel as 'wa' | 'dashboard' | 'email'
+      preferredChannel as 'wa' | 'email'
     );
     
     if (result.error) {

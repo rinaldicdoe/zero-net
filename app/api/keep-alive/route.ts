@@ -24,6 +24,13 @@ export async function GET() {
       data 
     });
   } catch (error: any) {
-    return NextResponse.json({ status: 'error', message: error.message }, { status: 500 });
+    return NextResponse.json({ 
+      status: 'error', 
+      message: error instanceof Error ? error.message : String(error),
+      envCheck: {
+        hasUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+        hasKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY
+      }
+    }, { status: 500 });
   }
 }

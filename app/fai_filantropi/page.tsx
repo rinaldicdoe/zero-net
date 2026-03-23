@@ -58,6 +58,29 @@ export default function FaiFilantropiPage() {
 
         if (insertError) throw insertError;
 
+        // Kirim notifikasi email via FormSubmit
+        try {
+          await fetch("https://formsubmit.co/ajax/kesejahteraanmaha@gmail.com", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              _subject: `Info Donasi Baru: ${data.name}`,
+              Tipe_Laporan: "FAI Filantropi (Donasi)",
+              Nama_Donatur: data.name,
+              Program_Studi_Instansi: data.study_program,
+              Nominal_Transfer: `Rp ${data.transfer_amount.toLocaleString('id-ID')}`,
+              Waktu_Donasi: new Date().toLocaleString("id-ID"),
+              Path_Bukti_Transfer_Supabase: fileName,
+              _template: "table"
+            }),
+          });
+        } catch (emailErr) {
+          console.error("Gagal mengirim notifikasi email:", emailErr);
+        }
+
         toast.success("Donasi Filantropi berhasil dikirim! Terima kasih.");
         form.reset();
         setFile(null);

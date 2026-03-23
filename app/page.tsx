@@ -162,6 +162,18 @@ export default function Home() {
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-400/20 rounded-full blur-3xl" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-violet-400/20 rounded-full blur-3xl" />
       </div>
+
+      {/* Footer */}
+      <footer className="w-full py-6 px-4 border-t border-slate-200/60 dark:border-slate-800/60 mt-auto z-10 bg-white/30 dark:bg-black/30 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Sebuah "Aplikasi Mendengar Aspirasi" yang dipersembahkan oleh <br className="sm:hidden" />
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">BEM Fakultas Studi Islam dan Peradaban</span>
+            <span className="hidden sm:inline"> | </span><br className="sm:hidden" />
+            Universitas Muhammadiyah Yogyakarta.
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }

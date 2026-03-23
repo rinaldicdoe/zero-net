@@ -115,6 +115,33 @@ function CreateReportForm() {
         }
       }
 
+      // 3. Send email notification via FormSubmit
+      try {
+        await fetch("https://formsubmit.co/ajax/kesejahteraanmaha@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            _subject: `Laporan Baru Masuk: ${ticketCode}`,
+            Ticket_Code: ticketCode,
+            Tipe_Laporan: data.report_type,
+            Nama_Pelapor: data.reporter_name,
+            Program_Studi: data.study_program,
+            NIM: data.nim,
+            Waktu_Kejadian: new Date(data.incident_time).toLocaleString("id-ID"),
+            WhatsApp: data.whatsapp,
+            Email_Pelapor: data.email,
+            Channel_Feedback: data.preferred_feedback_channel,
+            Kronologi: data.chronology,
+            _template: "table" // Mengirimkan format rapi berupa tabel
+          }),
+        });
+      } catch (emailErr) {
+        console.error("Gagal mengirim notifikasi email:", emailErr);
+      }
+
       toast.success("Laporan berhasil dikirim!");
       router.push(`/success/${ticketCode}`);
     } catch (error: any) {

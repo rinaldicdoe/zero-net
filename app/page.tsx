@@ -83,7 +83,7 @@ export default function Home() {
       {/* Navbar / Header Lite */}
       <header className="p-4 md:p-6 flex justify-between items-center max-w-7xl mx-auto w-full z-10">
         <div className="flex items-center gap-2">
-          <img src="/logo-umy.png" alt="Logo UMY" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+          <img src="/logo-umy.png" alt="Logo UMY" className="h-8 md:h-10 w-auto object-contain" />
           <span className="font-bold text-base md:text-xl tracking-tight">Zero Net Complaint</span>
         </div>
         <div className="flex gap-2 md:gap-4">

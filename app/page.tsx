@@ -12,7 +12,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShieldAlert, HeartHandshake, Building2, Search, ArrowRight } from "lucide-react";
+import { ShieldAlert, HeartHandshake, Building2, Search, ArrowRight, HandCoins } from "lucide-react";
 
 const categories = [
   {
@@ -24,6 +24,7 @@ const categories = [
     bg: "bg-red-500/10",
     border: "border-red-200 hover:border-red-500",
     link: "/report/create?category=1",
+    actionText: "Buat Laporan"
   },
   {
     id: 2,
@@ -34,6 +35,7 @@ const categories = [
     bg: "bg-blue-500/10",
     border: "border-blue-200 hover:border-blue-500",
     link: "/report/create?category=2",
+    actionText: "Buat Laporan"
   },
   {
     id: 3,
@@ -44,6 +46,18 @@ const categories = [
     bg: "bg-amber-500/10",
     border: "border-amber-200 hover:border-amber-500",
     link: "/report/create?category=3",
+    actionText: "Buat Laporan"
+  },
+  {
+    id: 4,
+    title: "FAI Filantropi",
+    description: "Salurkan donasi dan bantuan Anda untuk kemajuan bersama.",
+    icon: HandCoins,
+    color: "text-emerald-500",
+    bg: "bg-emerald-500/10",
+    border: "border-emerald-200 hover:border-emerald-500",
+    link: "/fai_filantropi",
+    actionText: "Kirim Donasi"
   },
 ];
 
@@ -75,11 +89,6 @@ export default function Home() {
           <span className="font-bold text-base md:text-xl tracking-tight">Zero Net Complaint</span>
         </div>
         <div className="flex gap-2 md:gap-4">
-          <Link href="/fai_filantropi" className="hidden sm:block">
-            <Button variant="ghost" size="sm" className="text-slate-600 dark:text-slate-300 text-xs md:text-sm">
-              FAI Filantropi
-            </Button>
-          </Link>
           <Link href="/track">
             <Button variant="outline" size="sm" className="gap-1 md:gap-2 text-xs md:text-sm">
               <Search className="w-3 h-3 md:w-4 md:h-4" />
@@ -118,7 +127,7 @@ export default function Home() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl w-full px-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl w-full px-4"
         >
           {categories.map((cat) => (
             <motion.div key={cat.id} variants={item}>
@@ -138,7 +147,7 @@ export default function Home() {
                   </CardContent>
                   <CardFooter className="mt-auto pt-0">
                     <div className={`text-sm font-medium flex items-center gap-1 ${cat.color}`}>
-                      Buat Laporan <ArrowRight className="w-4 h-4" />
+                      {cat.actionText} <ArrowRight className="w-4 h-4" />
                     </div>
                   </CardFooter>
                 </Card>
